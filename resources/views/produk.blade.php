@@ -98,18 +98,17 @@
           </thead>
           <tbody>
             @foreach ($datas as $data)
-            <?php echo gettype($data->kategori_fk) ?>
+
 
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->id }}</td>
                 <td>{{ $data->nama_produk }}</td>
-
-
-
-                <td>{{ $data->kategori_fk }}</td>
-
-
+@if(!is_null($data->kategori_fk))
+                <td>{{ $data->kategori_fk->nama_kategori }}</td>
+        @else
+        <td>Kategori tidak ada</td>
+@endif
 
 
 
