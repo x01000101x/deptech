@@ -96,13 +96,18 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($datas as $data)
-            <?php $dan = $join->where('id', $data->id)->first(); ?>
+            @foreach ($datas as $key => $data)
+            {{-- <?php $dan = $join->where('id', $data->id)->first(); echo gettype($dan);?> --}}
 
+            {{-- @dump($dan) --}}
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->id }}</td>
-                <td>{{ $dan->nama_produk }}</td>
+                @if(!is_null($data->produk_fk))
+                <td>{{ $data->produk_fk->nama_produk }}</td>
+                @else
+                <td>Kategori tidak ada</td>
+                @endif
                 <td>{{ $data->in }}</td>
                 <td>{{ $data->out }}</td>
                 <td>{{ $data->created_at }}</td>

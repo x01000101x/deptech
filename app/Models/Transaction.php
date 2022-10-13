@@ -10,4 +10,9 @@ class Transaction extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function produk_fk()
+    {
+        return $this->hasOne(Produk::class, 'id', 'produk_id');
+    }
 }
